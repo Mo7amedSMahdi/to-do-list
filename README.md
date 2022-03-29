@@ -24,7 +24,7 @@
 
 ## Live Demo
 
-[Ckeckout The live Site here](https://github.com/Mo7amedSMahdi/to-do-list/)
+> Soon.
 
 ## Getting started
 
