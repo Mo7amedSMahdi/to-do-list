@@ -25,13 +25,12 @@ class Task {
     if (task) {
       this.taskArray.push(task);
       localStorage.setItem('TASKS', JSON.stringify(this.taskArray));
-      this.render();
     } else {
       localStorage.setItem('TASKS', JSON.stringify(this.taskArray));
     }
   };
 }
 
-const task = new Task(JSON.parse(localStorage.getItem('TASKS') || []));
+const task = new Task(JSON.parse(localStorage.getItem('TASKS')) || []);
 task.render();
 task.addTask();
