@@ -85,6 +85,11 @@ select {
   font: inherit;
 }
 
+textarea:focus,
+input:focus {
+  outline: none;
+}
+
 /* Remove default button styles */
 button,
 input[type='submit'],
@@ -145,6 +150,7 @@ input[type='reset'] {
   line-height: 1.25rem;
   text-align: center;
   color: var(--clr-text-secondary);
+  width: 100%;
 }
 
 .btn {
@@ -157,15 +163,39 @@ input[type='reset'] {
   display: none !important;
 }
 
+.icon {
+  max-width: 24px;
+  max-height: 24px;
+}
+
+.icon--refresh {
+  content: url('./assets/images/icons/ico-refresh.svg');
+  min-width: 24px;
+}
+
+.icon--enter {
+  content: url('./assets/images/icons/ico-enter.svg');
+  min-width: 24px;
+}
+
+.icon--dots {
+  content: url('./assets/images/icons/ico-three-dots.svg');
+  min-width: 24px;
+}
+
+.icon--trash {
+  content: url('./assets/images/icons/ico-trash.svg');
+  min-width: 24px;
+}
+
 .container {
-  width: fit-content;
+  width: 75%;
   align-items: center;
   justify-content: center;
   background: var(--clr-white);
   box-shadow: 0 15px 39px -8px rgba(0, 0, 0, 0.35);
   -webkit-box-shadow: 0 15px 39px -8px rgba(0, 0, 0, 0.35);
   -moz-box-shadow: 0 15px 39px -8px rgba(0, 0, 0, 0.35);
-  padding: 1.25rem;
   margin: 0 auto;
 }
 
@@ -177,6 +207,7 @@ input[type='reset'] {
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  padding: 1.25rem;
 }
 
 .container__header h1 {
@@ -188,19 +219,20 @@ input[type='reset'] {
   width: 1.25rem;
 }
 
-.container__inputs {
+.add__task {
   width: 100%;
   align-items: center;
+  padding: 1.25rem;
 }
 
-.container__inputs > input {
+.add__task > input {
   border: 0;
   width: 100%;
   padding: 0.5rem;
   font-style: italic;
 }
 
-.container__inputs > input::placeholder {
+.add__task > input::placeholder {
   color: var(--clr-text-gray);
   font-weight: 400;
 }
@@ -211,17 +243,20 @@ input[type='reset'] {
   align-items: center;
   width: 100%;
   gap: 1rem;
+  padding: 0 1.25rem;
 }
 
 .nav--list > li {
   width: 100%;
 }
 
-.list__item p {
+.list__item input[type='text'] {
   width: 100%;
   font-size: 1rem;
   font-weight: 400;
   text-align: start;
+  padding: 1.25rem;
+  border: none;
 }
 
 .clear {
@@ -233,4 +268,5 @@ input[type='reset'] {
 .clear button {
   width: 100%;
   color: var(--clr-text-gray);
+  padding: 1.25rem;
 }
