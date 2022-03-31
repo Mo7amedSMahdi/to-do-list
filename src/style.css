@@ -203,6 +203,11 @@ input[type='reset'] {
   background: var(--clr-light);
 }
 
+.completed {
+  text-decoration: line-through;
+  color: rgb(148, 148, 148);
+}
+
 .container__header {
   justify-content: space-between;
   align-items: center;

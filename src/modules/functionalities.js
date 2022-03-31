@@ -14,7 +14,6 @@ const addTask = (tasks) => {
                     </div>
                 </li>`;
     listContainer.innerHTML += taskElement;
-    task.completed = false;
   });
 };
 
@@ -48,9 +47,6 @@ const editTasks = (tasks, addTask) => {
       const iconDots = li.querySelector('.icon--dots');
       const iconTrash = li.querySelector('.icon--trash');
       iconTrash.classList.remove('hidden');
-      iconTrash.addEventListener('mousedown', () => {
-        li.remove();
-      });
       iconDots.classList.add('hidden');
       li.classList.add('active');
       item.classList.add('active');

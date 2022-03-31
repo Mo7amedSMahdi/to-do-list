@@ -1,5 +1,11 @@
 import './style.css';
 import Form from './modules/form.js';
+import {
+  clearAllCompleted as ClearCompleted,
+  markCompleted as Complete,
+  checkCompleted as markAllCompleted,
+  clearAll as Clear,
+} from './modules/interactives.js';
 
 import {
   addTask as Add,
@@ -19,6 +25,14 @@ class Task {
 
     Edit(this.taskArray, this.addTask);
     Delete(this.taskArray, this.addTask);
+
+    ClearCompleted(this.taskArray);
+
+    Complete(this.taskArray, this.addTask);
+
+    markAllCompleted(this.taskArray);
+
+    Clear();
   };
 
   addTask = (task) => {
