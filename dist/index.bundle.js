@@ -126,7 +126,7 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _modules_task_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/task.js */ \"./src/modules/task.js\");\n\n\n\nconst task = new _modules_task_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"]();\ntask.render();\ntask.addTask();\n\n\n//# sourceURL=webpack://to-do-list/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _modules_form_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/form.js */ \"./src/modules/form.js\");\n/* harmony import */ var _modules_interactives_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/interactives.js */ \"./src/modules/interactives.js\");\n/* harmony import */ var _modules_functionalities_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/functionalities.js */ \"./src/modules/functionalities.js\");\n\n\n\n\n\n\nclass Task {\n  constructor(taskArray) {\n    this.taskArray = taskArray;\n  }\n\n  render = () => {\n    (0,_modules_form_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(this.addTask, this.taskArray);\n\n    (0,_modules_functionalities_js__WEBPACK_IMPORTED_MODULE_3__.addTask)(this.taskArray);\n\n    (0,_modules_functionalities_js__WEBPACK_IMPORTED_MODULE_3__.editTasks)(this.taskArray, this.addTask);\n    (0,_modules_functionalities_js__WEBPACK_IMPORTED_MODULE_3__.deletTask)(this.taskArray, this.addTask);\n\n    (0,_modules_interactives_js__WEBPACK_IMPORTED_MODULE_2__.clearAllCompleted)(this.taskArray);\n\n    (0,_modules_interactives_js__WEBPACK_IMPORTED_MODULE_2__.markCompleted)(this.taskArray, this.addTask);\n\n    (0,_modules_interactives_js__WEBPACK_IMPORTED_MODULE_2__.checkCompleted)(this.taskArray);\n\n    (0,_modules_interactives_js__WEBPACK_IMPORTED_MODULE_2__.clearAll)();\n  };\n\n  addTask = (task) => {\n    if (task) {\n      this.taskArray.push(task);\n      localStorage.setItem('TASKS', JSON.stringify(this.taskArray));\n    } else {\n      localStorage.setItem('TASKS', JSON.stringify(this.taskArray));\n    }\n  };\n}\n\nconst task = new Task(JSON.parse(localStorage.getItem('TASKS')) || []);\ntask.render();\ntask.addTask();\n\n\n//# sourceURL=webpack://to-do-list/./src/index.js?");
 
 /***/ }),
 
@@ -282,7 +282,7 @@ eval("module.exports = __webpack_require__.p + \"7747e0f66efb7f7a1be6.svg\";\n\n
 /******/ 	
 /******/ 	/* webpack/runtime/publicPath */
 /******/ 	(() => {
-/******/ 		__webpack_require__.p = "/todo-list/";
+/******/ 		__webpack_require__.p = "/to-do-list/";
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/jsonp chunk loading */
