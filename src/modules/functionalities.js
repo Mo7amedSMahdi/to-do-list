@@ -83,4 +83,6 @@ const inputEvents = (tasks, addTask, listContainer) => {
   });
 };
 
-export { displayTasks, inputEvents, editTasks, deletTask, removeTask };
+export {
+  displayTasks, inputEvents, editTasks, deletTask, removeTask,
+};

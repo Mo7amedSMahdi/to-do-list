@@ -28,10 +28,10 @@ const markCompleted = (tasksArray, addTask) => {
       const index = parseInt(input.getAttribute('id'), 10);
       if (checkBox.checked) {
         input.classList.add('completed');
-        completed(tasksArray, index, addTask, true);
+        completedStatus(tasksArray, index, addTask, true);
       } else {
         input.classList.remove('completed');
-        completed(tasksArray, index, addTask, false);
+        completedStatus(tasksArray, index, addTask, false);
       }
     });
   });
