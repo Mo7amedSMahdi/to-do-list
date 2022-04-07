@@ -1,13 +1,22 @@
+const clearCompleted = (tasksArray) => {
+  tasksArray = tasksArray.filter((task) => task.completed === false);
+  tasksArray.forEach((task, i) => {
+    task.index = i;
+  });
+  localStorage.setItem('TASKS', JSON.stringify(tasksArray));
+};
+
 const clearAllCompleted = (tasksArray) => {
   const clearAllBtn = document.querySelector('.clear--all');
   clearAllBtn.addEventListener('click', () => {
-    tasksArray = tasksArray.filter((task) => task.completed === false);
-    tasksArray.forEach((task, i) => {
-      task.index = i;
-    });
-    localStorage.setItem('TASKS', JSON.stringify(tasksArray));
+    clearCompleted(tasksArray);
     window.location.reload();
   });
+};
+
+const completedStatus = (tasksArray, addTask, index, status) => {
+  tasksArray[index].completed = status;
+  addTask();
 };
 
 const markCompleted = (tasksArray, addTask) => {
@@ -19,12 +28,10 @@ const markCompleted = (tasksArray, addTask) => {
       const index = parseInt(input.getAttribute('id'), 10);
       if (checkBox.checked) {
         input.classList.add('completed');
-        tasksArray[index].completed = true;
-        addTask();
+        completedStatus(tasksArray, index, addTask, true);
       } else {
         input.classList.remove('completed');
-        tasksArray[index].completed = false;
-        addTask();
+        completedStatus(tasksArray, index, addTask, false);
       }
     });
   });
@@ -52,5 +59,10 @@ const clearAll = () => {
 };
 
 export {
-  clearAllCompleted, markCompleted, checkCompleted, clearAll,
+  clearAllCompleted,
+  markCompleted,
+  checkCompleted,
+  clearAll,
+  completedStatus,
+  clearCompleted,
 };

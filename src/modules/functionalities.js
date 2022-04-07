@@ -1,4 +1,3 @@
-const listContainer = document.querySelector('.nav--list');
 let deletedTask = false;
 
 const displayTasks = (tasks, container) => {
@@ -24,7 +23,7 @@ const removeTask = (taskArray, addTask, id) => {
     task.index = i;
   });
   addTask();
-  window.location.reload();
+  // window.location.reload();
 };
 
 const deletTask = () => {
@@ -36,7 +35,12 @@ const deletTask = () => {
   });
 };
 
-const editTasks = (tasks, addTask) => {
+const editTasks = (newDesc, taskArray, addTask, index) => {
+  taskArray[index].description = newDesc;
+  addTask();
+};
+
+const inputEvents = (tasks, addTask, listContainer) => {
   const inputs = listContainer.querySelectorAll('input[type="text"]');
   let newDesc = '';
 
@@ -66,7 +70,7 @@ const editTasks = (tasks, addTask) => {
       const index = item.getAttribute('id');
       if (!deletedTask) {
         if (newDesc.trim()) {
-          tasks[index].description = newDesc.trim();
+          editTasks(newDesc.trim(), tasks, addTask, index);
           addTask();
         }
       } else {
@@ -80,5 +84,5 @@ const editTasks = (tasks, addTask) => {
 };
 
 export {
-  displayTasks, editTasks, deletTask, removeTask,
+  displayTasks, inputEvents, editTasks, deletTask, removeTask,
 };
