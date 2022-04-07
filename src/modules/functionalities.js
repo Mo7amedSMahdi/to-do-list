@@ -1,9 +1,9 @@
 const listContainer = document.querySelector('.nav--list');
 let deletedTask = false;
 
-const addTask = (tasks) => {
+const displayTasks = (tasks, container) => {
   tasks.forEach((task) => {
-    const taskElement = `<li>
+    const taskElement = `<li data-id="${task.index}">
                     <div class="list__item">
                         <input class="checkBox" type="checkbox" id=${task.index} name=${task.description} value=${task.description}>
                         <input type="text" id="${task.index}" value="${task.description}">
@@ -13,18 +13,17 @@ const addTask = (tasks) => {
                         </button>
                     </div>
                 </li>`;
-    listContainer.innerHTML += taskElement;
+    container.innerHTML += taskElement;
   });
 };
 
-const removeTask = (taskArray, addTask, item) => {
-  const index = parseInt(item.getAttribute('id'), 10);
+const removeTask = (taskArray, addTask, id) => {
+  const index = parseInt(id, 10);
   taskArray.splice(index, 1);
   taskArray.forEach((task, i) => {
     task.index = i;
   });
   addTask();
-  item.remove();
   window.location.reload();
 };
 
@@ -56,12 +55,13 @@ const editTasks = (tasks, addTask) => {
     });
 
     item.addEventListener('focusout', () => {
-      const li = item.parentElement;
+      const li = item.parentElement.parentNode;
+      const div = li.querySelector('.list__item');
       const iconDots = li.querySelector('.icon--dots');
       const iconTrash = li.querySelector('.icon--trash');
       iconTrash.classList.add('hidden');
       iconDots.classList.remove('hidden');
-      li.classList.remove('active');
+      div.classList.remove('active');
       item.classList.remove('active');
       const index = item.getAttribute('id');
       if (!deletedTask) {
@@ -70,7 +70,7 @@ const editTasks = (tasks, addTask) => {
           addTask();
         }
       } else {
-        removeTask(tasks, addTask, item);
+        removeTask(tasks, addTask, index);
       }
 
       newDesc = '';
@@ -79,4 +79,6 @@ const editTasks = (tasks, addTask) => {
   });
 };
 
-export { addTask, editTasks, deletTask };
+export {
+  displayTasks, editTasks, deletTask, removeTask,
+};
