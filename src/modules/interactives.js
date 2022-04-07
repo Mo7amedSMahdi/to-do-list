@@ -10,6 +10,11 @@ const clearAllCompleted = (tasksArray) => {
   });
 };
 
+const completedStatus = (tasksArray, addTask, index, status) => {
+  tasksArray[index].completed = status;
+  addTask();
+};
+
 const markCompleted = (tasksArray, addTask) => {
   const checkBoxes = document.querySelectorAll('input[type="checkbox"]');
   checkBoxes.forEach((checkBox) => {
@@ -19,12 +24,10 @@ const markCompleted = (tasksArray, addTask) => {
       const index = parseInt(input.getAttribute('id'), 10);
       if (checkBox.checked) {
         input.classList.add('completed');
-        tasksArray[index].completed = true;
-        addTask();
+        completed(tasksArray, index, addTask, true);
       } else {
         input.classList.remove('completed');
-        tasksArray[index].completed = false;
-        addTask();
+        completed(tasksArray, index, addTask, false);
       }
     });
   });
@@ -52,5 +55,9 @@ const clearAll = () => {
 };
 
 export {
-  clearAllCompleted, markCompleted, checkCompleted, clearAll,
+  clearAllCompleted,
+  markCompleted,
+  checkCompleted,
+  clearAll,
+  completedStatus,
 };

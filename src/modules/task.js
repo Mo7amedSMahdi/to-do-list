@@ -8,7 +8,7 @@ import {
 
 import {
   displayTasks as Display,
-  editTasks as Edit,
+  inputEvents as Edit,
   deletTask as Delete,
 } from './functionalities.js';
 
@@ -24,7 +24,7 @@ class Task {
 
     Display(this.taskArray, listContainer);
 
-    Edit(this.taskArray, this.addTask);
+    Edit(this.taskArray, this.addTask, listContainer);
     Delete(this.taskArray, this.addTask);
 
     ClearCompleted(this.taskArray);
