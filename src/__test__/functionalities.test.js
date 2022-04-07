@@ -1,8 +1,8 @@
 /**
  * @jest-environment jsdom
  */
-import { displayTasks, removeTask } from './functionalities.js';
-import Task from './task.js';
+import { displayTasks, removeTask } from '../modules/functionalities.js';
+import Task from '../modules/task.js';
 
 const Tasks = new Task();
 
