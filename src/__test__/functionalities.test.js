@@ -22,8 +22,8 @@ describe('functionalities : Add Task and local storage test', () => {
       completed: false,
     };
     Tasks.addTask(task);
-    displayTasks(Tasks.taskArray, listContainer);
-    expect(Tasks.taskArray).toHaveLength(1);
+    displayTasks(Tasks.tasksArray, listContainer);
+    expect(Tasks.tasksArray).toHaveLength(1);
   });
 
   test('test for local storage', () => {
@@ -35,8 +35,8 @@ describe('functionalities : Add Task and local storage test', () => {
 describe('functionalities : Remove task from list', () => {
   window.localStorage = Storage.prototype;
   test('Remove task', () => {
-    removeTask(Tasks.taskArray, Tasks.addTask, '0');
-    expect(Tasks.taskArray).toHaveLength(0);
+    removeTask(Tasks.tasksArray, Tasks.addTask, '0');
+    expect(Tasks.tasksArray).toHaveLength(0);
   });
 });
 
@@ -50,8 +50,8 @@ describe('functionalities : Edit task ', () => {
       completed: false,
     };
     Tasks.addTask(task);
-    editTasks('Edit Task', Tasks.taskArray, Tasks.addTask, 0);
-    const newTask = Tasks.taskArray.find((task) => task.index === 0);
+    editTasks('Edit Task', Tasks.tasksArray, Tasks.addTask, 0);
+    const newTask = Tasks.tasksArray.find((task) => task.index === 0);
     expect(newTask.description).toEqual('Edit Task');
   });
 });

@@ -1,11 +1,15 @@
+const clearCompleted = (tasksArray) => {
+  tasksArray = tasksArray.filter((task) => task.completed === false);
+  tasksArray.forEach((task, i) => {
+    task.index = i;
+  });
+  localStorage.setItem('TASKS', JSON.stringify(tasksArray));
+};
+
 const clearAllCompleted = (tasksArray) => {
   const clearAllBtn = document.querySelector('.clear--all');
   clearAllBtn.addEventListener('click', () => {
-    tasksArray = tasksArray.filter((task) => task.completed === false);
-    tasksArray.forEach((task, i) => {
-      task.index = i;
-    });
-    localStorage.setItem('TASKS', JSON.stringify(tasksArray));
+    clearCompleted(tasksArray);
     window.location.reload();
   });
 };
@@ -60,4 +64,5 @@ export {
   checkCompleted,
   clearAll,
   completedStatus,
+  clearCompleted,
 };

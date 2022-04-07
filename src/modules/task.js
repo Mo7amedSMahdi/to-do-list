@@ -1,10 +1,4 @@
 import Form from './form.js';
-import {
-  clearAllCompleted as ClearCompleted,
-  markCompleted as Complete,
-  checkCompleted as markAllCompleted,
-  clearAll as Clear,
-} from './interactives.js';
 
 import {
   displayTasks as Display,
@@ -16,32 +10,24 @@ const listContainer = document.querySelector('.nav--list');
 
 class Task {
   constructor() {
-    this.taskArray = JSON.parse(localStorage.getItem('TASKS')) || [];
+    this.tasksArray = JSON.parse(localStorage.getItem('TASKS')) || [];
   }
 
   render = () => {
-    Form(this.addTask, this.taskArray);
+    Form(this.addTask, this.tasksArray);
 
-    Display(this.taskArray, listContainer);
+    Display(this.tasksArray, listContainer);
 
-    Edit(this.taskArray, this.addTask, listContainer);
-    Delete(this.taskArray, this.addTask);
-
-    ClearCompleted(this.taskArray);
-
-    Complete(this.taskArray, this.addTask);
-
-    markAllCompleted(this.taskArray);
-
-    Clear();
+    Edit(this.tasksArray, this.addTask, listContainer);
+    Delete(this.tasksArray, this.addTask);
   };
 
   addTask = (task) => {
     if (task) {
-      this.taskArray.push(task);
-      localStorage.setItem('TASKS', JSON.stringify(this.taskArray));
+      this.tasksArray.push(task);
+      localStorage.setItem('TASKS', JSON.stringify(this.tasksArray));
     } else {
-      localStorage.setItem('TASKS', JSON.stringify(this.taskArray));
+      localStorage.setItem('TASKS', JSON.stringify(this.tasksArray));
     }
   };
 }
